@@ -1,0 +1,84 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Angular</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       </ul>
+      
+    </div>
+  </div>
+ 
+</nav>
+
+<div> 
+ 
+ <button type="button" style="margin-top:30px;" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#exampleModal">
+  Addusers
+</button>
+ 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add-Users</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <div class="action">
+<form #addform="ngForm" (ngSubmit)="onsubmit(addform)" >
+<div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Id</label>
+    <input type="text" [ngModel]='user.id' name='id'class="form-control"   style="width:300px">
+    </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name:</label>
+    <input type="email" [ngModel]='user.name' name='user'class="form-control" style="width:300px">
+    </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Imageurl</label>
+    <input type="text" [ngModel]='user.img' name='image' class="form-control" style="width:300px">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Location</label>
+    <input type="text" [ngModel]='user.location' name='location'class="form-control"  style="width:300px">
+  </div>
+ 
+  <button type="submit"  class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+       <input class="form-control me-2"  type="search"  placeholder="Search" style="margin-top:30px;width:450px;" aria-label="Search" #myinput [(ngModel)]="name" (input)="search()">  
+       <mat-grid-list cols="1" rowHeight="9:6">
+       
+  <mat-grid-tile *ngFor="let user of users">
+ <img src="https://i.pinimg.com/736x/2f/82/39/2f823993ba069d0aa966144e6f20d459.jpg" style="width:200px;height:120px">
+   <button style="margin-left:20px;margin-top:200px;" [routerLink]="['list/edit',user.id]">Edit</button>
+   <button style="margin-left:10px;margin-top:200px;" (click)='ondelete(user.id)'>Delete</button>
+  <h2 style="margin-left:-100px;">
+  
+ {{user.id}}
+  {{user.name}}
+  {{user.location}}
+  </h2>
+  
+  </mat-grid-tile>
+ 
+ 
+
+
+</mat-grid-list>
+
+
